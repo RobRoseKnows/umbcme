@@ -1,17 +1,11 @@
-# UMBC.me API
-## Develop applications using UMBC Course data
+# Documentation HTML Template
+A Sample HTML Documentation Template for Wordpress Themes, HTML Templates and Plugins. Built with Bootstrap 3. 
 
-## What is it?
-UMBC.me is an unofficial comprehensive API for UMBC data. Currently it includes course information, but we plan on expanding it to include much more.
+##Installation
+Download the package as ZIP and edit the HTML and CSS as you like.
 
-## Why?
-The UMBC.me API exists in order to aid in the development of applications to make it easier for students to manage courses and their semester in general.
+##Demo
+Click this link for a live demo : http://surjithctly.github.io/documentation-html-template/
 
-## What does it have?
-Currently UMBC.me only includes data on courses for the Fall 2017 semester. We plan on expanding the API to include more semester data into the future.
-
-## Is it free?
-Yes, UMBC.me is entirely free and open to the public for use underneath the MIT License.
-
-## How can I contribute?
-If you want any specific features for this API please open up a GitHub Issue on this repo, with your inquiry. If you believe you can develop/maintain for this API send an email over to umbcapi@gmail.com and we'll get back to you within 3 business days.
+##Credits
+This is a modified version of [Template Visual's](http://themeforest.net/user/templatevisual?ref=surjithctly&utm_source=github_surjithctly_docs) Documentation : Actual Documentation Link : http://goo.gl/RVwdHE

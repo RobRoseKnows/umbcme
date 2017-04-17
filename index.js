@@ -1,7 +1,9 @@
 /***********************************************
 ** Filename: index.js
 ** Description: Contains the endpoints for the UMBC API
-** Notes: Decided to
+** Notes: The goal of this project is to make it easier
+**        for students to interface with course data
+**        at UMBC
 ************************************************/
 let config = require('./config.json');
 let firebase = require('firebase-admin');

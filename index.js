@@ -1,29 +1,41 @@
+/***********************************************
+** Filename: index.js
+** Description: Contains the endpoints for the UMBC API
+** Notes: Decided to
+************************************************/
+let config = require('./config.json');
 let firebase = require('firebase-admin');
-let express = require('express');
-let app = express();
-let API_VERSION = "v0";
+let restify = require('restify');
+let plugins = require('restify-plugins');
+let logger  = require('morgan')
+
+const server = restify.createServer({
+  name: 'umbcapi',
+  version: '0.0.1'
+});
+
+const prefix = "v0";
+server.use(logger('dev'));
+server.use(plugins.acceptParser(server.acceptable));
+server.use(plugins.queryParser());
+server.use(plugins.bodyParser());
+
+
 // Initializing Firebase admin account
 let serviceAccount = require("./service-account.json");
 
 firebase.initializeApp({
   credential: firebase.credential.cert(serviceAccount),
-  databaseURL: 'https://umbcapi-c4910.firebaseio.com'
+  databaseURL: config.firebaseUrl
 });
 
-app.set('port', (process.env.PORT || 5000));
+// process.env.PORT || 5000
 
-app.use(express.static(__dirname + '/public'));
-
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.get('/', function(request, response) {
-  response.render('pages/index');
+server.get('/', (req, res) => {
+  res.redirect("http://umbc.me");
 });
 
-app.get('/' + API_VERSION + '/getAll', (req, res) => {
-  // Get the courses reference
+server.get('/' + prefix + '/getAll', (req, res) => {
   let coursesRef = firebase.database().ref('/');
   coursesRef.orderByChild("department").startAt(req.query.startAt.toUpperCase()).limitToFirst(parseInt(req.query.limit)).once("value").then((dataSnapshot) => {
 
@@ -34,7 +46,7 @@ app.get('/' + API_VERSION + '/getAll', (req, res) => {
     res.json(results);
   })
 });
-app.get('/' + API_VERSION + '/classInfo', (req, res) => {
+server.get('/' + prefix + '/classInfo', (req, res) => {
   let coursesRef = firebase.database().ref('/');
   coursesRef.orderByChild("title").equalTo(req.query.class.toUpperCase()).once("value").then((dataSnapshot) => {
     let results = [];
@@ -43,7 +55,9 @@ app.get('/' + API_VERSION + '/classInfo', (req, res) => {
     });
     res.json(results);
   })
-})
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+});
+
+const port = process.env.PORT || 5000;
+server.listen(port, function() {
+  console.log('%s listening at %s', server.name, server.url);
 });

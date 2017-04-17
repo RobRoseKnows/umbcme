@@ -8,12 +8,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-	"deploy": "./deploy.sh"
+    "deploy": "./deploy.sh"
   },
   "dependencies": {
     "ejs": "2.5.6",
     "express": "4.15.2",
-    "firebase-admin": "^4.2.1"
+    "firebase-admin": "^4.2.1",
+    "morgan": "^1.8.1",
+    "restify": "^4.3.0",
+    "restify-plugins": "^1.6.0",
+    "restify-url-semver": "^1.0.1"
   },
   "repository": {
     "type": "git",

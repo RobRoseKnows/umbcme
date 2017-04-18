@@ -17,6 +17,7 @@
     "morgan": "^1.8.1",
     "restify": "^4.3.0",
     "restify-plugins": "^1.6.0",
+    "restify-router": "^0.4.2",
     "restify-url-semver": "^1.0.1"
   },
   "repository": {

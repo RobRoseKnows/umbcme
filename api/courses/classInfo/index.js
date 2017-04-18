@@ -1,12 +1,12 @@
-let deps = require('../../deps');
-let config = deps.config;
-let firebase = deps.firebase;
-let Router = require('restify-router').Router;
-let classInfo = new Router();
+const deps = require('../../deps');
+const config = deps.config;
+const firebase = deps.firebase;
+const Router = require('restify-router').Router;
+const classInfo = new Router();
 
 // Get information on a specific class
 classInfo.get('/' + config.version + '/classInfo', (req, res) => {
-  let coursesRef = firebase.database().ref('/');
+  const coursesRef = firebase.database().ref('/');
   coursesRef
     .orderByChild("title")
     .equalTo(req.query.class.toUpperCase())

@@ -1,12 +1,12 @@
-let deps = require('../../deps');
-let config = deps.config;
-let firebase = deps.firebase;
-let Router = require('restify-router').Router;
-let department = new Router();
+const deps = require('../../deps');
+const config = deps.config;
+const firebase = deps.firebase;
+const Router = require('restify-router').Router;
+const department = new Router();
 
 // List all of the courses in a the department
 department.get('/' + config.version + '/department', (req, res) => {
-  let coursesRef = firebase.database().ref('/');
+  const coursesRef = firebase.database().ref('/');
   coursesRef
     .orderByChild("department")
     .equalTo(req.query.name.toUpperCase())

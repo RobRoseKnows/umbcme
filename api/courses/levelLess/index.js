@@ -1,12 +1,12 @@
-let deps = require('../../deps');
-let config = deps.config;
-let firebase = deps.firebase;
-let Router = require('restify-router').Router;
-let levelLess = new Router();
+const deps = require('../../deps');
+const config = deps.config;
+const firebase = deps.firebase;
+const Router = require('restify-router').Router;
+const levelLess = new Router();
 
 // Get all courses less than a course level e.g. less than 300 level course
 levelLess.get('/' + config.version + '/levelLess', (req, res) => {
-  let coursesRef = firebase.database().ref('/');
+  const coursesRef = firebase.database().ref('/');
   coursesRef
     .orderByChild("level")
     .endAt(parseInt(req.query.level))

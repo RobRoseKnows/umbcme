@@ -5,18 +5,21 @@
 **        for students to interface with course data
 **        at UMBC
 ************************************************/
-let config = require('./config.json');
-let restify = require('restify');
-let plugins = require('restify-plugins');
-let logger  = require('morgan')
-let firebase = require('./firebase');
-let getAll = require('./api/courses/getAll/');
-let classInfo = require('./api/courses/classInfo/');
-let department = require('./api/courses/department/');
-let levelGreater = require('./api/courses/levelGreater/');
-let levelLess = require('./api/courses/levelLess/');
-let teaches = require('./api/courses/teaches/');
-let teachesDept = require('./api/courses/teachesDept/');
+const config = require('./config.json');
+const restify = require('restify');
+const plugins = require('restify-plugins');
+const logger  = require('morgan')
+const firebase = require('./firebase');
+
+/******************** COURSES ***************************/
+const getAll = require('./api/courses/getAll/');
+const classInfo = require('./api/courses/classInfo/');
+const department = require('./api/courses/department/');
+const levelGreater = require('./api/courses/levelGreater/');
+const levelLess = require('./api/courses/levelLess/');
+const teaches = require('./api/courses/teaches/');
+const teachesDept = require('./api/courses/teachesDept/');
+/******************** END COURSES ************************/
 
 const server = restify.createServer({
   name: 'umbcapi',

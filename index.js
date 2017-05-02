@@ -17,13 +17,14 @@ const classInfo = require('./api/courses/classInfo/');
 const department = require('./api/courses/department/');
 const levelGreater = require('./api/courses/levelGreater/');
 const levelLess = require('./api/courses/levelLess/');
+const sectionInfo = require('./api/courses/sectionInfo'),
 const teaches = require('./api/courses/teaches/');
 const teachesDept = require('./api/courses/teachesDept/');
 /******************** END COURSES ************************/
 
 const server = restify.createServer({
   name: 'umbcapi',
-  version: '0.0.1'
+  version: '0.0.2'
 });
 
 const prefix = "v0";
@@ -32,7 +33,7 @@ server.use(plugins.acceptParser(server.acceptable));
 server.use(plugins.queryParser());
 server.use(plugins.bodyParser());
 
-const courses = [getAll, classInfo, department, levelGreater, levelLess, teaches, teachesDept];
+const courses = [getAll, classInfo, department, levelGreater, levelLess, sectionInfo, teaches, teachesDept];
 
 courses.forEach((router) => router.applyRoutes(server));
 

@@ -1,6 +1,6 @@
 {
   "name": "umbcme",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "UMBC Course Data",
   "engines": {
     "node": "6.10.2"
